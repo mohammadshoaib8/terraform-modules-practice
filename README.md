@@ -1,3 +1,7 @@
+🏷️ Technologies Used
+<p> <img src="https://img.shields.io/badge/AWS-Cloud-orange?style=for-the-badge&logo=amazonaws"/> <img src="https://img.shields.io/badge/Terraform-Infrastructure_as_Code-7B42BC?style=for-the-badge&logo=terraform"/> <img src="https://img.shields.io/badge/EC2-Compute-yellow?style=for-the-badge&logo=amazonec2"/> <img src="https://img.shields.io/badge/VPC-Networking-blue?style=for-the-badge&logo=awslambda"/> <img src="https://img.shields.io/badge/DevOps-Engineer-brightgreen?style=for-the-badge&logo=github"/> </p>
+📁 Repository Structure
+
 Terraform AWS Infrastructure — VPC + EC2 Modular Project
 
 Overview
@@ -9,14 +13,6 @@ This repository implements a complete Terraform Modular AWS Infrastructure, incl
 ✔ dev / stage / prod environments
 ✔ Remote backend support
 ✔ Bootstrap folder for backend provisioning (S3 + DynamoDB)
-
-This structure follows real company-level Terraform best practices for scalable and maintainable IaC.
-
-🏷️ Technologies Used
-<p> <img src="https://img.shields.io/badge/AWS-Cloud-orange?style=for-the-badge&logo=amazonaws"/> <img src="https://img.shields.io/badge/Terraform-Infrastructure_as_Code-7B42BC?style=for-the-badge&logo=terraform"/> <img src="https://img.shields.io/badge/EC2-Compute-yellow?style=for-the-badge&logo=amazonec2"/> <img src="https://img.shields.io/badge/VPC-Networking-blue?style=for-the-badge&logo=awslambda"/> <img src="https://img.shields.io/badge/DevOps-Engineer-brightgreen?style=for-the-badge&logo=github"/> </p>
-📁 Repository Structure
-
-This README is 100% accurate with your GitHub structure.
 
 1. Bootstrap (Creates Backend S3 + DynamoDB)
 bootstrap/
