@@ -1,132 +1,164 @@
-🌐 Terraform VPC + EC2 Project (AWS Hands-On Lab)
-<p align="left"> <img src="/mnt/data/03787faa-11ec-4afb-b728-15bf406a9929.png" width="900"> </p>
-🚀 Terraform Modules Practice – Complete AWS Project
+🌐 Terraform AWS Infrastructure — VPC + EC2 Modular Project
+<p align="center"> <img src="/mnt/data/ab4ad82b-8665-4cf0-a82c-625faad52e98.png" width="900"> </p>
+🚀 Overview
 
-A fully modular, production-grade Terraform Project demonstrating how to build AWS infrastructure using best practices.
-This repository is designed so anyone visiting your GitHub instantly understands your project.
+This repository implements a complete Terraform Modular AWS Infrastructure, including:
 
-🏷️ Tech Stack & Topics
-<p> <img src="https://img.shields.io/badge/AWS-Cloud-orange?style=for-the-badge&logo=amazonaws" /> <img src="https://img.shields.io/badge/Terraform-IaC-7B42BC?style=for-the-badge&logo=terraform" /> <img src="https://img.shields.io/badge/VPC-Networking-blue?style=for-the-badge&logo=awslambda" /> <img src="https://img.shields.io/badge/EC2-Compute-yellow?style=for-the-badge&logo=amazonec2" /> <img src="https://img.shields.io/badge/HashiCorp-Provider-6441A5?style=for-the-badge&logo=hashicorp" /> <img src="https://img.shields.io/badge/DevOps-Engineer-green?style=for-the-badge&logo=githubactions" /> </p>
-🎯 Project Goals
+✔ Reusable VPC module
+✔ Reusable EC2 module
+✔ dev / stage / prod environments
+✔ Remote backend support
+✔ Bootstrap folder for backend provisioning (S3 + DynamoDB)
 
-This repository helps you practice real-world Terraform patterns:
+This structure follows real company-level Terraform best practices for scalable and maintainable IaC.
 
-✔ Modular Infra Design
-✔ Separate Dev / Stage / Prod
-✔ Remote State using S3 + DynamoDB
-✔ Reusable VPC + EC2 Modules
-✔ Team-ready workflow
-✔ Git-ignored state files
-✔ Clean & scalable structure
-
+🏷️ Technologies Used
+<p> <img src="https://img.shields.io/badge/AWS-Cloud-orange?style=for-the-badge&logo=amazonaws"/> <img src="https://img.shields.io/badge/Terraform-Infrastructure_as_Code-7B42BC?style=for-the-badge&logo=terraform"/> <img src="https://img.shields.io/badge/EC2-Compute-yellow?style=for-the-badge&logo=amazonec2"/> <img src="https://img.shields.io/badge/VPC-Networking-blue?style=for-the-badge&logo=awslambda"/> <img src="https://img.shields.io/badge/DevOps-Engineer-brightgreen?style=for-the-badge&logo=github"/> </p>
 📁 Repository Structure
-terraform-modules-practice/
-├── modules/
-│   ├── vpc/
-│   ├── ec2/
-│   ├── security-groups/
-│   └── (additional modules)
+
+This README is 100% accurate with your GitHub structure.
+
+📌 1. Bootstrap (Creates Backend S3 + DynamoDB)
+bootstrap/
+└── main.tf
+
+
+Used only once to create:
+
+✔ S3 bucket for remote state
+✔ DynamoDB table for locking
+
+📌 2. Modules (Reusable Components)
+modules/
 │
-└── environments/
-    ├── dev/
-    ├── stage/
-    └── prod/
+├── vpc/
+│   ├── main.tf
+│   ├── variables.tf
+│   └── output.tf
+│
+└── ec2/
+    ├── main.tf
+    ├── variables.tf
+    └── output.tf
 
-📦 modules/
-
-Reusable modules with:
-
-main.tf
-
-variables.tf
-
-outputs.tf
-
-🌍 environments/
-
-Each environment contains:
-
-Backend config
-
-Provider config
-
-Module usage
-
-tfvars support
-
-🔐 Remote Backend Setup
-☁️ S3 Bucket – State Storage
-
-Stores terraform.tfstate
-
-Enables versioning
-
-Shares state across team members
-
-🔒 DynamoDB – State Locking
-
-Prevents two people from applying at same time
-
-Ensures safe & consistent infra
-
-🧪 How to Use This Project
-1️⃣ Navigate to an environment
-cd environments/dev
-
-2️⃣ Initialize Terraform
-terraform init
-
-3️⃣ Validate
-terraform validate
-
-4️⃣ Plan
-terraform plan
-
-5️⃣ Apply
-terraform apply
-
-6️⃣ Destroy Infra
-terraform destroy
-
-🌈 Architecture Overview
-
-You can add a diagram here later:
+🔹 VPC Module Creates
 
 VPC
- ├── Public Subnets
- ├── Internet Gateway
- ├── Route Tables
- └── EC2 Instance
 
-💼 Team Collaboration Flow
+Public Subnets
 
-✔ Everyone uses same remote state
-✔ DynamoDB prevents conflict
-✔ Modules ensure reusability
-✔ Environments isolate deployments
+Internet Gateway
 
-🧰 Best Practices Followed
+Route Table
 
-✔ No hardcoded secrets
-✔ Variables for all inputs
-✔ Output references between modules
-✔ Consistent formatting
-✔ Git-ignored state files
-✔ Industry-level folder structure
+Route Table Associations
 
-🤝 Contributing
+🔹 EC2 Module Creates
 
-Fork the repo
+Ubuntu EC2 Instance
 
-Create a branch
+Security Group
 
-Submit PR
+Key Pair
+
+📌 3. Environments (dev / stage / prod)
+environments/
+│
+├── dev/
+│   ├── backend.tf
+│   ├── main.tf
+│   ├── terraform.tfvars
+│   └── variables.tf
+│
+├── prod/
+│   ├── backend.tf
+│   ├── main.tf
+│   └── variables.tf
+│
+└── stage/
+    ├── backend.tf
+    ├── main.tf
+    └── variables.tf
+
+
+Each environment has:
+
+✔ Its own backend
+✔ Its own variables
+✔ Its own main.tf that calls modules
+
+This is exactly how companies manage multiple environments.
+
+📌 4. Root (Optional Local Execution)
+main.tf
+provider.tf
+variables.tf
+output.tf
+terraform.tfvars
+
+
+You can deploy from root OR from environment folders.
+
+🧪 How to Deploy
+Step 1 — Configure Backend (Only Once)
+
+Run inside bootstrap:
+
+cd bootstrap
+terraform init
+terraform apply
+
+
+This creates:
+
+✔ S3 bucket
+✔ DynamoDB locking table
+
+Step 2 — Deploy Any Environment
+Example: Deploy dev
+cd environments/dev
+terraform init
+terraform plan
+terraform apply
+
+For stage:
+cd environments/stage
+terraform apply
+
+For prod:
+cd environments/prod
+terraform apply
+
+🌈 Why This Structure Is Best Practice
+
+✔ Scalable
+✔ Clean separation of environments
+✔ Reusable modules
+✔ Easy collaboration
+✔ Supports Git branching strategies
+✔ Supports remote state & locking
+
+🔮 Next Enhancements (Optional)
+
+I can help you add:
+
+ALB module
+
+Auto Scaling Group
+
+NAT gateways
+
+Private subnets
+
+RDS module
+
+CI/CD (GitHub Actions for terraform fmt + validate)
 
 ⭐ Support
 
-If this helps you — don’t forget to star ⭐ the repo!
+If this layout helped you, give your repo a ⭐ on GitHub!
 
 👤 Author
 
 Mohammad Shoaib
-DevOps Engineer | Terraform | AWS | Kubernetes
+DevOps Engineer
