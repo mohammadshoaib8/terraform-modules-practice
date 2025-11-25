@@ -1,6 +1,6 @@
-🌐 Terraform AWS Infrastructure — VPC + EC2 Modular Project
-<p align="center"> <img src="/mnt/data/ab4ad82b-8665-4cf0-a82c-625faad52e98.png" width="900"> </p>
-🚀 Overview
+Terraform AWS Infrastructure — VPC + EC2 Modular Project
+
+Overview
 
 This repository implements a complete Terraform Modular AWS Infrastructure, including:
 
@@ -18,7 +18,7 @@ This structure follows real company-level Terraform best practices for scalable 
 
 This README is 100% accurate with your GitHub structure.
 
-📌 1. Bootstrap (Creates Backend S3 + DynamoDB)
+1. Bootstrap (Creates Backend S3 + DynamoDB)
 bootstrap/
 └── main.tf
 
@@ -28,7 +28,7 @@ Used only once to create:
 ✔ S3 bucket for remote state
 ✔ DynamoDB table for locking
 
-📌 2. Modules (Reusable Components)
+2. Modules (Reusable Components)
 modules/
 │
 ├── vpc/
@@ -41,7 +41,7 @@ modules/
     ├── variables.tf
     └── output.tf
 
-🔹 VPC Module Creates
+VPC Module Creates
 
 VPC
 
@@ -53,7 +53,7 @@ Route Table
 
 Route Table Associations
 
-🔹 EC2 Module Creates
+EC2 Module Creates
 
 Ubuntu EC2 Instance
 
@@ -61,7 +61,7 @@ Security Group
 
 Key Pair
 
-📌 3. Environments (dev / stage / prod)
+3. Environments (dev / stage / prod)
 environments/
 │
 ├── dev/
@@ -89,7 +89,7 @@ Each environment has:
 
 This is exactly how companies manage multiple environments.
 
-📌 4. Root (Optional Local Execution)
+4. Root (Optional Local Execution)
 main.tf
 provider.tf
 variables.tf
@@ -99,7 +99,7 @@ terraform.tfvars
 
 You can deploy from root OR from environment folders.
 
-🧪 How to Deploy
+How to Deploy
 Step 1 — Configure Backend (Only Once)
 
 Run inside bootstrap:
@@ -129,7 +129,7 @@ For prod:
 cd environments/prod
 terraform apply
 
-🌈 Why This Structure Is Best Practice
+Why This Structure Is Best Practice
 
 ✔ Scalable
 ✔ Clean separation of environments
@@ -138,27 +138,14 @@ terraform apply
 ✔ Supports Git branching strategies
 ✔ Supports remote state & locking
 
-🔮 Next Enhancements (Optional)
 
-I can help you add:
+👨‍💻 Author
 
-ALB module
+Shaik Mohammad Shoaib
+DevOps Engineer (3 Years Experience)
 
-Auto Scaling Group
+🔗 LinkedIn:
+https://www.linkedin.com/in/mohammadshoaib8
 
-NAT gateways
-
-Private subnets
-
-RDS module
-
-CI/CD (GitHub Actions for terraform fmt + validate)
-
-⭐ Support
-
-If this layout helped you, give your repo a ⭐ on GitHub!
-
-👤 Author
-
-Mohammad Shoaib
-DevOps Engineer
+🐙 GitHub:
+https://github.com/mohammadshoaib8
